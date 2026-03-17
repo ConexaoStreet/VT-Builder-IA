@@ -4,12 +4,8 @@ const promptField = document.getElementById('projectPrompt');
 function generateTitle(prompt){
   const text = (prompt || '').trim();
   if (!text) return 'Novo Projeto';
-  const lower = text.toLowerCase();
-  if (lower.includes('streetwear')) return 'Loja Streetwear Premium';
-  if (lower.includes('hamburguer')) return 'Landing de Hamburgueria';
-  if (lower.includes('sneaker') || lower.includes('shox') || lower.includes('tn')) return 'Loja de Sneakers';
-  const cleaned = text.split(/[.!?]/)[0].slice(0, 38).trim();
-  return cleaned || 'Novo Projeto';
+  const cut = text.split(/[.!?]/)[0].trim();
+  return cut.length > 42 ? cut.slice(0, 42).trim() + '...' : cut;
 }
 
 if (createBtn) {
