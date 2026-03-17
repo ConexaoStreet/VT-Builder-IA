@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VT Builder IA — Builder</title>
+  <meta name="description" content="Workspace principal do VT Builder IA com chat-first, preview ao vivo, páginas, arquivos e ações de publicar/exportar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <header class="builder-header">
+    <div class="builder-top">
+      <div class="builder-left">
+        <a class="brand compact" href="index.html">
+          <span class="brand-mark">VT</span>
+          <span class="brand-copy">
+            <strong>VT Builder IA</strong>
+            <small>live builder</small>
+          </span>
+        </a>
+
+        <div class="project-pill">
+          <b>Untitled Project</b>
+          <span>draft</span>
+        </div>
+      </div>
+
+      <div class="builder-actions">
+        <button class="icon-btn">↶</button>
+        <button class="icon-btn">↷</button>
+        <button class="btn btn-sm btn-outline">Exportar</button>
+        <button class="btn btn-sm btn-outline">Share</button>
+        <button class="btn btn-sm btn-primary">Publicar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="builder-main">
+    <aside class="panel files-panel">
+      <div class="panel-head">
+        <strong>Projeto</strong>
+        <button class="mini-btn">+</button>
+      </div>
+
+      <div class="project-summary">
+        <div>
+          <b>Site atual</b>
+          <span>E-commerce premium</span>
+        </div>
+        <div class="live-dot">live</div>
+      </div>
+
+      <div class="side-group">
+        <span class="side-title">Páginas</span>
+        <button class="side-item active" data-preview="home">Home</button>
+        <button class="side-item" data-preview="catalog">Catálogo</button>
+        <button class="side-item" data-preview="product">Produto</button>
+        <button class="side-item" data-preview="about">Sobre</button>
+        <button class="side-item" data-preview="contact">Contato</button>
+      </div>
+
+      <div class="side-group">
+        <span class="side-title">Arquivos</span>
+        <div class="file-tree">
+          <button class="file-item">app/</button>
+          <button class="file-item">components/</button>
+          <button class="file-item">pages/</button>
+          <button class="file-item">styles/</button>
+          <button class="file-item active">home.tsx</button>
+          <button class="file-item">catalog.tsx</button>
+          <button class="file-item">product.tsx</button>
+          <button class="file-item">globals.css</button>
+        </div>
+      </div>
+
+      <div class="side-group">
+        <span class="side-title">Mudanças recentes</span>
+        <div class="history-list">
+          <div class="history-row"><b>Agora</b><span>Hero refinado</span></div>
+          <div class="history-row"><b>3 min</b><span>Produtos criados</span></div>
+          <div class="history-row"><b>7 min</b><span>Catálogo adicionado</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="preview-panel-main">
+      <div class="preview-toolbar">
+        <div class="left-tools">
+          <button class="toolbar-chip active">Preview</button>
+          <button class="toolbar-chip">Code</button>
+          <button class="toolbar-chip">Changes</button>
+        </div>
+        <div class="right-tools">
+          <button class="toolbar-chip active">Desktop</button>
+          <button class="toolbar-chip">Tablet</button>
+          <button class="toolbar-chip">Mobile</button>
+        </div>
+      </div>
+
+      <div class="preview-wrap">
+        <div class="preview-screen active" id="preview-home">
+          <div class="mock-site">
+            <div class="mock-topbar">
+              <div class="mock-logo"></div>
+              <div class="mock-menu"></div>
+            </div>
+
+            <div class="mock-hero">
+              <div class="mock-copy">
+                <span class="mock-badge">Novo visual</span>
+                <h2>Streetwear importado com presença</h2>
+                <p>Layout criado por IA e refinado por conversa.</p>
+                <div class="mock-cta-row"><span></span><span></span></div>
+              </div>
+              <div class="mock-visual"></div>
+            </div>
+
+            <div class="mock-categories">
+              <div></div><div></div><div></div><div></div>
+            </div>
+
+            <div class="mock-products">
+              <div></div><div></div><div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-screen" id="preview-catalog">
+          <div class="mock-catalog">
+            <div class="mock-filter"></div>
+            <div class="mock-catalog-grid">
+              <div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-screen" id="preview-product">
+          <div class="mock-product-page">
+            <div class="mock-product-image"></div>
+            <div class="mock-product-info">
+              <div class="line xl"></div>
+              <div class="line lg"></div>
+              <div class="line sm"></div>
+              <div class="chips"><span></span><span></span><span></span></div>
+              <div class="actions"><div></div><div></div></div>
+              <div class="block"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-screen" id="preview-about">
+          <div class="mock-simple-page">
+            <div class="hero-box"></div>
+            <div class="text-grid"><div></div><div></div><div></div></div>
+          </div>
+        </div>
+
+        <div class="preview-screen" id="preview-contact">
+          <div class="mock-contact-page">
+            <div class="contact-large"></div>
+            <div class="contact-side"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel chat-panel-main">
+      <div class="panel-head">
+        <strong>Chat</strong>
+        <div class="tabs-inline">
+          <button class="small-tab active">Agent</button>
+          <button class="small-tab">Logs</button>
+        </div>
+      </div>
+
+      <div class="chat-scroll" id="chatScroll">
+        <div class="chat-bubble user">
+          <small>Você</small>
+          <p>Cria uma loja premium de roupa preta e branca com cara de marca cara.</p>
+        </div>
+
+        <div class="chat-bubble ai">
+          <small>VT Builder IA</small>
+          <p>Vou criar a home, um catálogo inicial, visual dark premium e uma estrutura forte no mobile.</p>
+        </div>
+
+        <div class="chat-bubble user">
+          <small>Você</small>
+          <p>Deixa mais forte, melhora a tipografia e adiciona promoções.</p>
+        </div>
+
+        <div class="chat-bubble ai">
+          <small>VT Builder IA</small>
+          <p>Feito. Reforcei o hero, aumentei contraste, melhorei os cards e adicionei uma seção promocional.</p>
+        </div>
+      </div>
+
+      <div class="composer">
+        <div class="composer-tools">
+          <button class="mini-btn">+</button>
+          <button class="mini-btn">🖼</button>
+          <button class="mini-btn">📎</button>
+        </div>
+        <textarea id="chatInput" placeholder="Peça alterações no site, crie páginas, troque fontes, melhore o mobile..."></textarea>
+        <div class="composer-actions">
+          <button class="btn btn-xs btn-outline">Parar</button>
+          <button class="btn btn-xs btn-primary" id="sendBtn">Enviar</button>
+        </div>
+      </div>
+
+      <div class="panel properties-panel">
+        <div class="panel-head inner">
+          <strong>Propriedades da seleção</strong>
+        </div>
+
+        <div class="prop-list">
+          <label class="prop-field">
+            <span>Título</span>
+            <input type="text" value="Streetwear importado com presença" />
+          </label>
+          <label class="prop-field">
+            <span>Subtítulo</span>
+            <textarea rows="4">Layout criado por IA e refinado por conversa, com foco em mobile e conversão.</textarea>
+          </label>
+          <label class="prop-field">
+            <span>Estilo</span>
+            <select>
+              <option>Dark Premium</option>
+              <option>Clean Premium</option>
+              <option>Streetwear</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="main.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
