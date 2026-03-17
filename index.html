@@ -3,206 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VT Builder IA — Chat-first Builder</title>
-  <meta name="description" content="Interface chat-first estilo lovable para criar sites por conversa, com preview ao vivo, arquivos e mudanças por prompt." />
-  <meta name="theme-color" content="#0a0a0d" />
+  <title>VT Builder IA</title>
+  <meta name="theme-color" content="#0b0b10" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="spotlight" aria-hidden="true"></div>
+<body class="dashboard-body">
+  <div class="dashboard-shell">
+    <header class="dashboard-topbar">
+      <div class="top-left">
+        <button class="icon-btn">☰</button>
+      </div>
+      <div class="brand-center">
+        <div class="brand-dot">VT</div>
+        <strong>VT Builder IA</strong>
+      </div>
+      <div class="top-right">
+        <div class="avatar">VT</div>
+      </div>
+    </header>
 
-  <header class="site-header">
-    <div class="container topbar">
-      <a class="brand" href="#">
-        <span class="brand-mark">VT</span>
-        <span class="brand-copy">
-          <strong>VT Builder IA</strong>
-          <small>chat-first website builder</small>
-        </span>
-      </a>
+    <main class="dashboard-main">
+      <section class="hero-stack">
+        <div class="glow glow-blue"></div>
+        <div class="glow glow-pink"></div>
+        <div class="glow glow-orange"></div>
 
-      <nav class="topnav">
-        <a href="#how">Como funciona</a>
-        <a href="#examples">Exemplos</a>
-        <a href="app.html" class="btn btn-sm btn-outline">Abrir builder</a>
-      </nav>
-
-      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal is-visible">
-          <div class="eyebrow">
-            <span class="pulse"></span>
-            Construa sites falando com a IA
-          </div>
-
-          <h1>
-            Você escreve no chat.
-            <span class="gradient-text">A IA vai construindo o site</span>
-            em tempo real.
-          </h1>
-
-          <p>
-            Sem formulário travado. Sem setup engessado. O usuário entra, pede o que quer
-            e a IA cria, edita, refina e reorganiza o projeto pela conversa — com preview,
-            arquivos e páginas ao vivo.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="app.html">Começar no builder</a>
-            <a class="btn btn-ghost" href="#examples">Ver exemplos</a>
-          </div>
-
-          <div class="prompt-suggestions">
-            <button>Crie um site premium para uma loja de roupa preta e branca</button>
-            <button>Faça uma landing page de hamburgueria moderna</button>
-            <button>Crie um e-commerce de sneakers com visual dark</button>
-          </div>
+        <div class="hero-copy">
+          <h1>O que vamos criar hoje?</h1>
+          <p>Comece um projeto novo com um único comando. Depois disso, a IA abre um chat dedicado com histórico, preview do site e arquivos do projeto.</p>
         </div>
 
-        <div class="hero-visual reveal is-visible">
-          <div class="hero-shell">
-            <div class="shell-bar">
-              <span></span><span></span><span></span>
-              <b>builder session / live preview</b>
+        <div class="prompt-card">
+          <textarea id="projectPrompt" placeholder="Ex: Crie uma loja premium de streetwear preta e branca com cara de marca cara, catálogo forte, mobile impecável e checkout moderno."></textarea>
+
+          <div class="prompt-actions">
+            <div class="prompt-left">
+              <button class="mini-circle">＋</button>
             </div>
-
-            <div class="hero-shell-body">
-              <aside class="mini-chat">
-                <div class="mini-label">Chat</div>
-
-                <div class="mini-msg user">
-                  <small>Você</small>
-                  <p>Cria um site premium pra uma loja de roupa preta e branca.</p>
-                </div>
-
-                <div class="mini-msg ai">
-                  <small>VT Builder IA</small>
-                  <p>Vou criar a home, o catálogo, um estilo dark premium e um CTA de WhatsApp.</p>
-                </div>
-
-                <div class="mini-msg user">
-                  <small>Você</small>
-                  <p>Deixa mais parecido com uma marca cara, mais forte no mobile.</p>
-                </div>
-
-                <div class="mini-terminal">
-                  <div>✓ Home criada</div>
-                  <div>✓ Hero refinado</div>
-                  <div>✓ Catálogo adicionado</div>
-                  <div>↻ Otimizando mobile...</div>
-                </div>
-              </aside>
-
-              <section class="mini-preview">
-                <div class="mini-toolbar">
-                  <span class="tag active">Preview</span>
-                  <span class="tag">Files</span>
-                  <span class="tag">Publish</span>
-                </div>
-
-                <div class="mini-stage">
-                  <div class="mini-header"></div>
-                  <div class="mini-hero-card">
-                    <div class="mini-copy">
-                      <span class="mini-badge">Nova coleção</span>
-                      <h3>Streetwear forte, limpo e premium</h3>
-                      <p>Estrutura criada por conversa.</p>
-                    </div>
-                    <div class="mini-art"></div>
-                  </div>
-                  <div class="mini-grid">
-                    <div></div><div></div><div></div><div></div>
-                  </div>
-                </div>
-              </section>
+            <div class="prompt-right">
+              <button class="ghost-icon">🖼</button>
+              <button class="ghost-icon">🎙</button>
+              <button class="send-btn" id="createProjectBtn">↑</button>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="how">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Fluxo certo</span>
-          <h2>Bem mais perto de um Lovable de verdade.</h2>
-          <p>O núcleo da experiência é conversa + preview + arquivos + iteração contínua.</p>
-        </div>
+      <section class="dashboard-tabs">
+        <button class="tab active">Projetos recentes</button>
+        <button class="tab">Meus projetos</button>
+        <button class="tab">Templates</button>
+      </section>
 
-        <div class="steps">
-          <article class="step-card reveal">
-            <span>01</span>
-            <h3>Usuário escreve no chat</h3>
-            <p>“Cria um e-commerce premium de roupa.”</p>
-          </article>
-          <article class="step-card reveal">
-            <span>02</span>
-            <h3>A IA monta a base</h3>
-            <p>Páginas, layout, componentes, copy e preview inicial.</p>
-          </article>
-          <article class="step-card reveal">
-            <span>03</span>
-            <h3>Refino por conversa</h3>
-            <p>“Deixa mais clean”, “troca a fonte”, “melhora o mobile”.</p>
-          </article>
-          <article class="step-card reveal">
-            <span>04</span>
-            <h3>Arquivos e preview ao vivo</h3>
-            <p>O projeto cresce como um app de verdade, não como formulário.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="examples">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">O que a IA pode receber</span>
-          <h2>Prompts naturais, como numa conversa aqui.</h2>
-        </div>
-
-        <div class="example-grid">
-          <article class="example-card reveal">
-            <h3>Loja de roupa</h3>
-            <p>Cria uma loja premium de streetwear preta e branca, com catálogo bonito e foco em celular.</p>
-          </article>
-          <article class="example-card reveal">
-            <h3>Landing page</h3>
-            <p>Faz uma landing page moderna de barbearia com hero forte, depoimentos e botão de WhatsApp.</p>
-          </article>
-          <article class="example-card reveal">
-            <h3>SaaS</h3>
-            <p>Cria um site de SaaS com pricing, dashboard preview e visual dark premium.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section cta-wrap">
-      <div class="container">
-        <div class="cta-card reveal">
-          <div>
-            <span class="kicker">Próxima tela</span>
-            <h2>O builder principal já vem nessa lógica certa.</h2>
-            <p>Chat à esquerda, arquivos e páginas, preview grande no centro e barra superior de ações.</p>
+      <section class="project-grid">
+        <article class="project-card">
+          <div class="project-preview dark"></div>
+          <div class="project-info">
+            <strong>VT Imports</strong>
+            <span>Loja streetwear premium</span>
           </div>
-          <a class="btn btn-primary" href="app.html">Abrir builder</a>
-        </div>
-      </div>
-    </section>
-  </main>
+        </article>
+        <article class="project-card">
+          <div class="project-preview blue"></div>
+          <div class="project-info">
+            <strong>Retro Match</strong>
+            <span>Camisas retrô e futebol</span>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-preview orange"></div>
+          <div class="project-info">
+            <strong>Shox Hub</strong>
+            <span>Sneakers / Nike Shox</span>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
 
-  <script src="main.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>

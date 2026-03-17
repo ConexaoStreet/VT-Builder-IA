@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VT Builder IA — Projeto</title>
+  <meta name="theme-color" content="#0b0b10" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="chat-body">
+  <div class="chat-app">
+    <aside class="left-rail">
+      <div class="rail-top">
+        <a href="index.html" class="back-link">←</a>
+        <button class="new-chat">Novo projeto</button>
+      </div>
+
+      <div class="rail-section">
+        <span class="rail-label">Projetos</span>
+        <button class="rail-project active">VT Imports — Loja Premium</button>
+        <button class="rail-project">Retro Match — Futebol</button>
+        <button class="rail-project">Shox Hub — Sneakers</button>
+      </div>
+
+      <div class="rail-section">
+        <span class="rail-label">Histórico</span>
+        <button class="rail-item">Prompt inicial</button>
+        <button class="rail-item">Refino do hero</button>
+        <button class="rail-item">Catálogo criado</button>
+        <button class="rail-item">Checkout ajustado</button>
+      </div>
+    </aside>
+
+    <main class="center-chat">
+      <header class="chat-header">
+        <div>
+          <small>Projeto ativo</small>
+          <h1 id="chatTitle">VT Imports — Loja Premium</h1>
+        </div>
+
+        <div class="chat-header-actions">
+          <button class="top-action">Código</button>
+          <button class="top-action">Deploy</button>
+          <button class="top-action primary">Publicar</button>
+        </div>
+      </header>
+
+      <div class="chat-history" id="chatHistory">
+        <div class="msg user">
+          <small>Você</small>
+          <p id="firstPromptText">Crie uma loja premium de streetwear preta e branca com cara de marca cara, catálogo forte e mobile impecável.</p>
+        </div>
+
+        <div class="msg ai">
+          <small>VT Builder IA</small>
+          <p>Perfeito. Vou estruturar esse projeto como um e-commerce premium com home impactante, catálogo forte, páginas de produto, carrinho, checkout e contato por WhatsApp.</p>
+        </div>
+
+        <div class="msg ai system">
+          <small>Sistema</small>
+          <p>✓ Título do projeto gerado<br>✓ Home criada<br>✓ Preview inicial montado<br>✓ Estrutura de páginas criada</p>
+        </div>
+
+        <div class="msg user">
+          <small>Você</small>
+          <p>Deixa mais agressivo, mais parecido com loja de roupa cara e melhora bem o mobile.</p>
+        </div>
+
+        <div class="msg ai">
+          <small>VT Builder IA</small>
+          <p>Feito. Reforcei a tipografia, aumentei contraste, ajustei espaçamento do hero, melhorei grid mobile e deixei os cards de produto mais premium.</p>
+        </div>
+      </div>
+
+      <div class="composer">
+        <textarea id="chatInput" placeholder="Peça mudanças no site, crie páginas, refine o visual, troque fontes, melhore o mobile..."></textarea>
+        <div class="composer-bottom">
+          <div class="composer-tools">
+            <button class="mini-circle">＋</button>
+            <button class="ghost-icon">📎</button>
+            <button class="ghost-icon">🖼</button>
+          </div>
+          <button class="send-btn" id="sendMessageBtn">↑</button>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-preview">
+      <div class="preview-topbar">
+        <strong>Preview ao vivo</strong>
+        <div class="preview-modes">
+          <button class="mode active">Desktop</button>
+          <button class="mode">Mobile</button>
+        </div>
+      </div>
+
+      <div class="preview-canvas">
+        <div class="browser-bar">
+          <span></span><span></span><span></span>
+        </div>
+
+        <div class="site-preview" id="sitePreview">
+          <div class="preview-header">
+            <div class="preview-logo"></div>
+            <div class="preview-nav"></div>
+          </div>
+
+          <div class="preview-hero">
+            <div class="hero-copy-card">
+              <b class="tiny-kicker">Nova coleção</b>
+              <h2>Streetwear importado com presença premium</h2>
+              <p>Visual escuro, forte, moderno e mobile-first.</p>
+              <div class="hero-buttons">
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="hero-visual-card"></div>
+          </div>
+
+          <div class="preview-products">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+
+          <div class="preview-strip"></div>
+        </div>
+      </div>
+
+      <div class="files-box">
+        <div class="files-head">
+          <strong>Arquivos</strong>
+        </div>
+        <div class="files-list">
+          <button>home.tsx</button>
+          <button>catalog.tsx</button>
+          <button>product.tsx</button>
+          <button>checkout.tsx</button>
+          <button>styles.css</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script src="chat.js"></script>
+</body>
+</html>
