@@ -2,81 +2,77 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>VT Builder IA</title>
-  <meta name="theme-color" content="#0b0b10" />
+  <meta name="theme-color" content="#0a0a0a" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="dashboard-body">
-  <div class="dashboard-shell">
-    <header class="dashboard-topbar">
-      <div class="top-left">
-        <button class="icon-btn">☰</button>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-side">
+        <button class="icon-btn mobile-only" id="openDrawerBtn" aria-label="Abrir menu">☰</button>
       </div>
-      <div class="brand-center">
-        <div class="brand-dot">VT</div>
-        <strong>VT Builder IA</strong>
+
+      <div class="brand">
+        <div class="brand-badge">VT</div>
+        <div class="brand-copy">
+          <strong>VT Builder IA</strong>
+          <span>Construa sites por conversa</span>
+        </div>
       </div>
-      <div class="top-right">
+
+      <div class="topbar-side right">
         <div class="avatar">VT</div>
       </div>
     </header>
 
+    <aside class="mobile-drawer" id="mobileDrawer">
+      <div class="drawer-card">
+        <div class="drawer-head">
+          <strong>Projetos</strong>
+          <button class="icon-btn small" id="closeDrawerBtn" aria-label="Fechar menu">✕</button>
+        </div>
+        <div class="drawer-list" id="drawerProjectList"></div>
+      </div>
+    </aside>
+
     <main class="dashboard-main">
-      <section class="hero-stack">
+      <section class="hero">
         <div class="hero-copy">
+          <p class="eyebrow">IA para criar sites</p>
           <h1>O que vamos criar hoje?</h1>
-          <p>Comece um projeto novo com um único comando. A IA cria o projeto, gera o título do chat, abre o histórico, monta o preview e continua construindo tudo pela conversa.</p>
+          <p class="hero-text">
+            Digite o primeiro comando. A IA cria um projeto novo, gera um título automaticamente, abre um chat próprio,
+            mantém histórico separado e mostra preview do site no mesmo fluxo.
+          </p>
         </div>
 
-        <div class="prompt-card">
-          <textarea id="projectPrompt" placeholder="Ex: Crie um site premium para uma clínica moderna, com hero forte, seções institucionais, serviços, depoimentos, formulário e versão mobile impecável."></textarea>
+        <section class="prompt-panel" aria-label="Criar novo projeto">
+          <textarea id="projectPrompt" placeholder="Ex: Crie um site premium para uma clínica moderna, com hero forte, serviços, depoimentos, formulário e versão mobile impecável."></textarea>
 
-          <div class="prompt-actions">
-            <div class="prompt-left">
-              <button class="mini-circle">＋</button>
+          <div class="prompt-toolbar">
+            <button class="circle-btn subtle" aria-label="Adicionar anexo">＋</button>
+
+            <div class="prompt-actions">
+              <button class="circle-btn subtle" aria-label="Imagem">🖼</button>
+              <button class="circle-btn subtle" aria-label="Voz">🎙</button>
+              <button class="circle-btn send" id="createProjectBtn" aria-label="Criar projeto">↑</button>
             </div>
-            <div class="prompt-right">
-              <button class="ghost-icon">🖼</button>
-              <button class="ghost-icon">🎙</button>
-              <button class="send-btn" id="createProjectBtn">↑</button>
-            </div>
           </div>
-        </div>
+        </section>
       </section>
 
-      <section class="dashboard-tabs">
-        <button class="tab active">Projetos recentes</button>
-        <button class="tab">Meus projetos</button>
-        <button class="tab">Templates</button>
+      <section class="tab-row">
+        <button class="tab is-active" type="button">Projetos recentes</button>
+        <button class="tab" type="button">Meus projetos</button>
+        <button class="tab" type="button">Templates</button>
       </section>
 
-      <section class="project-grid">
-        <article class="project-card">
-          <div class="project-preview dark"></div>
-          <div class="project-info">
-            <strong>Clínica Aurora</strong>
-            <span>Site institucional premium</span>
-          </div>
-        </article>
-        <article class="project-card">
-          <div class="project-preview blue"></div>
-          <div class="project-info">
-            <strong>Burger Wave</strong>
-            <span>Landing page de hamburgueria</span>
-          </div>
-        </article>
-        <article class="project-card">
-          <div class="project-preview orange"></div>
-          <div class="project-info">
-            <strong>NovaPay</strong>
-            <span>SaaS fintech moderno</span>
-          </div>
-        </article>
-      </section>
+      <section class="projects-grid" id="projectGrid"></section>
     </main>
   </div>
 

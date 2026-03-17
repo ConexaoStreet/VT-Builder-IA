@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VT Builder IA — Workspace</title>
+  <meta name="description" content="Workspace principal do VT Builder IA com chat, páginas, preview, propriedades e ações de publicar/exportar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="workspace.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">VT</span>
+        <span class="brand-copy">
+          <strong>VT Builder IA</strong>
+          <small>Workspace principal</small>
+        </span>
+      </a>
+
+      <div class="workspace-top-actions">
+        <button class="btn btn-sm btn-outline">Salvar versão</button>
+        <button class="btn btn-sm btn-outline">Exportar</button>
+        <button class="btn btn-sm btn-primary">Publicar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="workspace-main">
+    <div class="workspace-layout">
+      <aside class="left-rail">
+        <div class="rail-section project-box">
+          <div class="project-top">
+            <div>
+              <strong>VT Imports</strong>
+              <small>streetwear / sneakers</small>
+            </div>
+            <span class="status-pill">ativo</span>
+          </div>
+
+          <div class="project-stats">
+            <div><strong>32</strong><span>produtos</span></div>
+            <div><strong>8</strong><span>páginas</span></div>
+            <div><strong>4</strong><span>banners</span></div>
+          </div>
+        </div>
+
+        <div class="rail-section">
+          <div class="rail-title">Páginas do projeto</div>
+          <div class="page-tree">
+            <button class="tree-item active" data-screen="home">Home</button>
+            <button class="tree-item" data-screen="catalogo">Catálogo</button>
+            <button class="tree-item" data-screen="produto">Produto</button>
+            <button class="tree-item" data-screen="checkout">Checkout</button>
+            <button class="tree-item" data-screen="contato">Contato</button>
+            <button class="tree-item" data-screen="admin">Admin</button>
+          </div>
+        </div>
+
+        <div class="rail-section">
+          <div class="rail-title">Camadas</div>
+          <div class="layers">
+            <label><input type="checkbox" checked> Header fixo</label>
+            <label><input type="checkbox" checked> Hero principal</label>
+            <label><input type="checkbox" checked> Grid de categorias</label>
+            <label><input type="checkbox" checked> Produtos em destaque</label>
+            <label><input type="checkbox" checked> CTA WhatsApp</label>
+            <label><input type="checkbox"> Depoimentos</label>
+          </div>
+        </div>
+
+        <div class="rail-section">
+          <div class="rail-title">Histórico</div>
+          <div class="history-list">
+            <div class="history-item"><strong>Agora</strong><span>Hero refinado</span></div>
+            <div class="history-item"><strong>2 min</strong><span>Catálogo criado</span></div>
+            <div class="history-item"><strong>6 min</strong><span>Layout inicial</span></div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="center-stage">
+        <div class="stage-toolbar">
+          <div class="toolbar-left">
+            <button class="view-btn active">Desktop</button>
+            <button class="view-btn">Tablet</button>
+            <button class="view-btn">Mobile</button>
+          </div>
+          <div class="toolbar-right">
+            <span class="tiny-pill">Preview ao vivo</span>
+            <span class="tiny-pill dark">Sem erros visuais</span>
+          </div>
+        </div>
+
+        <div class="stage-frame">
+          <div class="screen active" id="screen-home">
+            <div class="site-preview">
+              <div class="site-header">
+                <div class="logo-mini"></div>
+                <div class="menu-mini"></div>
+              </div>
+              <div class="hero-big">
+                <div class="hero-copy-mini">
+                  <span class="mini-tag">Nova fase</span>
+                  <h3>Streetwear importado com identidade forte</h3>
+                  <p>Layout premium gerado pela IA com foco total em conversão.</p>
+                  <div class="hero-cta-mini"><span></span><span></span></div>
+                </div>
+                <div class="hero-art-mini"></div>
+              </div>
+              <div class="category-grid-mini">
+                <div></div><div></div><div></div><div></div>
+              </div>
+              <div class="product-strip">
+                <div></div><div></div><div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen" id="screen-catalogo">
+            <div class="catalog-preview">
+              <div class="catalog-toolbar"></div>
+              <div class="catalog-layout">
+                <div class="filter-col"></div>
+                <div class="catalog-grid">
+                  <div></div><div></div><div></div><div></div><div></div><div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen" id="screen-produto">
+            <div class="product-preview">
+              <div class="product-image"></div>
+              <div class="product-info">
+                <div class="line-big"></div>
+                <div class="line-mid"></div>
+                <div class="line-small"></div>
+                <div class="chip-row"><span></span><span></span><span></span></div>
+                <div class="button-row"><div></div><div></div></div>
+                <div class="text-block"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen" id="screen-checkout">
+            <div class="checkout-preview">
+              <div class="checkout-left">
+                <div class="form-row"></div>
+                <div class="form-row"></div>
+                <div class="form-row"></div>
+                <div class="form-row tall"></div>
+              </div>
+              <div class="checkout-right">
+                <div class="summary-box"></div>
+                <div class="summary-box small"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen" id="screen-contato">
+            <div class="contact-preview">
+              <div class="contact-card large"></div>
+              <div class="contact-card"></div>
+              <div class="contact-card"></div>
+            </div>
+          </div>
+
+          <div class="screen" id="screen-admin">
+            <div class="admin-preview">
+              <div class="admin-side"></div>
+              <div class="admin-main">
+                <div class="admin-head"></div>
+                <div class="admin-cards"><div></div><div></div><div></div></div>
+                <div class="admin-table"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right-rail">
+        <div class="rail-section">
+          <div class="rail-title">Chat da IA</div>
+          <div class="chat-thread">
+            <div class="chat-msg user">
+              <small>Você</small>
+              <p>Deixa a home mais premium e melhora o bloco de promoções.</p>
+            </div>
+            <div class="chat-msg ai">
+              <small>VT Builder IA</small>
+              <p>Posso fazer isso. Vou aumentar o contraste, melhorar o hero e trocar a hierarquia dos cards promocionais.</p>
+            </div>
+            <div class="chat-msg ai">
+              <small>VT Builder IA</small>
+              <p>Também posso adicionar uma faixa de confiança com envio, suporte e compra segura.</p>
+            </div>
+          </div>
+          <div class="prompt-box">
+            <textarea id="promptInput" placeholder="Peça uma mudança no layout, textos, páginas ou produtos..."></textarea>
+            <div class="prompt-actions">
+              <button class="btn btn-xs btn-outline">Anexar</button>
+              <button class="btn btn-xs btn-primary" id="sendPrompt">Enviar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rail-section">
+          <div class="rail-title">Propriedades</div>
+          <div class="properties">
+            <label class="prop">
+              <span>Título da seção</span>
+              <input type="text" value="Streetwear importado com identidade forte" />
+            </label>
+            <label class="prop">
+              <span>Subtítulo</span>
+              <textarea rows="4">Layout premium gerado pela IA com foco total em conversão, visual forte e experiência excelente no celular.</textarea>
+            </label>
+            <label class="prop">
+              <span>Template ativo</span>
+              <select>
+                <option>Streetwear Dark</option>
+                <option>Sneaker Launch</option>
+                <option>Football Lifestyle</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="rail-section">
+          <div class="rail-title">Ações rápidas</div>
+          <div class="quick-actions-grid">
+            <button class="quick-action">Adicionar banner</button>
+            <button class="quick-action">Criar categoria</button>
+            <button class="quick-action">Gerar produtos</button>
+            <button class="quick-action">Ativar WhatsApp</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="workspace.js"></script>
+</body>
+</html>

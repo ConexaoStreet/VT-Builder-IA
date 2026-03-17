@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VT Builder IA — Admin Dashboard</title>
+  <meta name="description" content="Painel admin do VT Builder IA com projetos, templates, billing, assets, usuários e configurações globais." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">VT</span>
+        <span class="brand-copy">
+          <strong>VT Builder IA</strong>
+          <small>Admin dashboard</small>
+        </span>
+      </a>
+
+      <div class="dashboard-top-actions">
+        <button class="btn btn-sm btn-outline">Nova workspace</button>
+        <button class="btn btn-sm btn-outline">Convidar time</button>
+        <button class="btn btn-sm btn-primary">Upgrade Pro</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dash-main">
+    <div class="dash-layout">
+      <aside class="dash-sidebar">
+        <div class="side-brand">
+          <div class="side-user">
+            <div class="avatar">VT</div>
+            <div>
+              <strong>ConexaoStreet</strong>
+              <small>owner workspace</small>
+            </div>
+          </div>
+        </div>
+
+        <nav class="side-nav">
+          <button class="nav-item active" data-panel="overview">Overview</button>
+          <button class="nav-item" data-panel="projects">Projetos</button>
+          <button class="nav-item" data-panel="templates">Templates</button>
+          <button class="nav-item" data-panel="assets">Assets</button>
+          <button class="nav-item" data-panel="users">Usuários</button>
+          <button class="nav-item" data-panel="billing">Billing</button>
+          <button class="nav-item" data-panel="settings">Settings</button>
+        </nav>
+
+        <div class="side-footer">
+          <div class="usage-card">
+            <strong>Uso do workspace</strong>
+            <div class="usage-line"><span>Projetos</span><b>3/10</b></div>
+            <div class="usage-line"><span>Assets</span><b>1.8 GB</b></div>
+            <div class="usage-line"><span>Requests IA</span><b>4.2k</b></div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="dash-content">
+        <div class="dash-panel active" id="panel-overview">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Painel principal</span>
+              <h1>Visão geral da plataforma</h1>
+              <p>Aqui você acompanha os números principais, projetos recentes, performance da IA e atalhos de operação.</p>
+            </div>
+            <div class="head-actions">
+              <button class="btn btn-sm btn-outline">Exportar relatório</button>
+              <button class="btn btn-sm btn-primary">Criar projeto</button>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="metric-card">
+              <small>Projetos ativos</small>
+              <strong>12</strong>
+              <span>+3 na última semana</span>
+            </article>
+            <article class="metric-card">
+              <small>Gerações concluídas</small>
+              <strong>284</strong>
+              <span>98% com sucesso</span>
+            </article>
+            <article class="metric-card">
+              <small>Usuários no workspace</small>
+              <strong>5</strong>
+              <span>2 admins / 3 editores</span>
+            </article>
+            <article class="metric-card">
+              <small>MRR estimado</small>
+              <strong>R$ 1.490</strong>
+              <span>+12% este mês</span>
+            </article>
+          </div>
+
+          <div class="overview-grid">
+            <article class="panel-card large">
+              <div class="card-head">
+                <strong>Projetos recentes</strong>
+                <button class="ghost-link">Ver todos</button>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Projeto</th>
+                      <th>Nicho</th>
+                      <th>Status</th>
+                      <th>Atualização</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>VT Imports</td>
+                      <td>Streetwear / Sneakers</td>
+                      <td><span class="status active">Ativo</span></td>
+                      <td>Agora</td>
+                    </tr>
+                    <tr>
+                      <td>Shox Hub</td>
+                      <td>Tênis premium</td>
+                      <td><span class="status draft">Draft</span></td>
+                      <td>12 min</td>
+                    </tr>
+                    <tr>
+                      <td>Retro Match</td>
+                      <td>Camisas retrô</td>
+                      <td><span class="status published">Publicado</span></td>
+                      <td>1 h</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel-card">
+              <div class="card-head">
+                <strong>Fila do agente</strong>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <b>Refino de hero</b>
+                  <span>VT Imports</span>
+                </div>
+                <div class="stack-item">
+                  <b>Gerar 24 produtos</b>
+                  <span>Shox Hub</span>
+                </div>
+                <div class="stack-item">
+                  <b>Criar FAQ</b>
+                  <span>Retro Match</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel-card">
+              <div class="card-head">
+                <strong>Saúde do sistema</strong>
+              </div>
+              <div class="health-list">
+                <div><span>Builder API</span><b class="ok">Operando</b></div>
+                <div><span>Preview Engine</span><b class="ok">Operando</b></div>
+                <div><span>Storage</span><b class="ok">Operando</b></div>
+                <div><span>Workers IA</span><b class="warn">Alto uso</b></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="dash-panel" id="panel-projects">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Projetos</span>
+              <h1>Todos os projetos do workspace</h1>
+              <p>Gerencie lojas, status, nicho, dono do projeto e última atualização.</p>
+            </div>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <div class="project-cover dark"></div>
+              <div class="project-meta">
+                <strong>VT Imports</strong>
+                <span>Streetwear premium</span>
+                <div class="project-tags"><em>Ativo</em><em>Mobile-first</em></div>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-cover blue"></div>
+              <div class="project-meta">
+                <strong>Shox Hub</strong>
+                <span>Sneakers launch</span>
+                <div class="project-tags"><em>Draft</em><em>Catalog</em></div>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-cover green"></div>
+              <div class="project-meta">
+                <strong>Retro Match</strong>
+                <span>Football lifestyle</span>
+                <div class="project-tags"><em>Publicado</em><em>WhatsApp</em></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="dash-panel" id="panel-templates">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Templates</span>
+              <h1>Biblioteca visual</h1>
+              <p>Modelos base usados pela IA para reduzir erros e acelerar o resultado.</p>
+            </div>
+          </div>
+
+          <div class="template-admin-grid">
+            <article class="template-admin-card">
+              <div class="admin-thumb black"></div>
+              <strong>Streetwear Dark</strong>
+              <span>Preto, branco, hero forte</span>
+            </article>
+            <article class="template-admin-card">
+              <div class="admin-thumb gray"></div>
+              <strong>Sneaker Launch</strong>
+              <span>Cards premium e lançamentos</span>
+            </article>
+            <article class="template-admin-card">
+              <div class="admin-thumb mixed"></div>
+              <strong>Football Lifestyle</strong>
+              <span>Camisas, promoções e banners</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="dash-panel" id="panel-assets">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Assets</span>
+              <h1>Biblioteca de mídia</h1>
+              <p>Organize logos, banners, imagens de categoria e arquivos visuais.</p>
+            </div>
+          </div>
+
+          <div class="assets-grid">
+            <div class="asset-box"></div>
+            <div class="asset-box"></div>
+            <div class="asset-box"></div>
+            <div class="asset-box"></div>
+            <div class="asset-box"></div>
+            <div class="asset-box"></div>
+          </div>
+        </div>
+
+        <div class="dash-panel" id="panel-users">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Usuários</span>
+              <h1>Time e permissões</h1>
+              <p>Controle acesso de owner, admins, editores e suporte.</p>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Perfil</th>
+                  <th>Status</th>
+                  <th>Último acesso</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ConexaoStreet</td>
+                  <td>Owner</td>
+                  <td><span class="status active">Ativo</span></td>
+                  <td>Agora</td>
+                </tr>
+                <tr>
+                  <td>Editor One</td>
+                  <td>Editor</td>
+                  <td><span class="status published">Ativo</span></td>
+                  <td>35 min</td>
+                </tr>
+                <tr>
+                  <td>Support IA</td>
+                  <td>Support</td>
+                  <td><span class="status draft">Convidado</span></td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="dash-panel" id="panel-billing">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Billing</span>
+              <h1>Plano, uso e cobrança</h1>
+              <p>Visual preparado para assinaturas, consumo de IA e upgrade de workspace.</p>
+            </div>
+          </div>
+
+          <div class="billing-grid">
+            <article class="panel-card">
+              <strong>Plano atual</strong>
+              <h3>Pro Workspace</h3>
+              <p>Projetos ilimitados, templates premium e 10k requests IA / mês.</p>
+              <button class="btn btn-sm btn-primary">Gerenciar plano</button>
+            </article>
+            <article class="panel-card">
+              <strong>Consumo atual</strong>
+              <div class="billing-bars">
+                <div><span>Requests IA</span><b>4.2k / 10k</b></div>
+                <div class="bar"><i style="width:42%"></i></div>
+                <div><span>Storage</span><b>1.8 GB / 10 GB</b></div>
+                <div class="bar"><i style="width:18%"></i></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="dash-panel" id="panel-settings">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Settings</span>
+              <h1>Configurações globais</h1>
+              <p>Branding do builder, envs visuais, domínio, e-mail e preferências do workspace.</p>
+            </div>
+          </div>
+
+          <div class="settings-grid">
+            <label class="setting-field">
+              <span>Nome do workspace</span>
+              <input type="text" value="VT Builder IA" />
+            </label>
+            <label class="setting-field">
+              <span>E-mail principal</span>
+              <input type="email" value="vtimportspb@gmail.com" />
+            </label>
+            <label class="setting-field">
+              <span>Subdomínio</span>
+              <input type="text" value="builder.vtimports" />
+            </label>
+            <label class="setting-field">
+              <span>Tema base</span>
+              <select>
+                <option>Dark premium</option>
+                <option>Graphite</option>
+                <option>Light clean</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

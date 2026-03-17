@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VT Builder IA — Onboarding</title>
+  <meta name="description" content="Onboarding premium do VT Builder IA para configurar nome da loja, nicho, identidade visual, contatos e objetivo do projeto." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="onboarding.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">VT</span>
+        <span class="brand-copy">
+          <strong>VT Builder IA</strong>
+          <small>Onboarding inteligente</small>
+        </span>
+      </a>
+
+      <nav class="nav-links desktop-only">
+        <a href="index.html">Voltar</a>
+        <a href="#form">Configurar</a>
+        <a href="#summary">Resumo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="onboarding-main">
+    <section class="section onboarding-hero">
+      <div class="container onboarding-top">
+        <div class="onboarding-copy reveal is-visible">
+          <span class="eyebrow">
+            <span class="pulse"></span>
+            Etapa 2 — Configuração do projeto
+          </span>
+          <h1>Defina a loja uma vez. A IA cuida do resto.</h1>
+          <p>
+            Essa tela capta o que realmente importa: nome da loja, nicho, estilo visual,
+            canais de contato, nível da estrutura e objetivo comercial. Depois disso,
+            o builder já consegue gerar uma base muito mais certeira.
+          </p>
+
+          <div class="progress-wrap">
+            <div class="progress-head">
+              <strong>Progresso do onboarding</strong>
+              <span id="progressLabel">22%</span>
+            </div>
+            <div class="progress-bar">
+              <span id="progressBar"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-preview reveal is-visible">
+          <div class="quick-card">
+            <div class="quick-head">
+              <span class="dot live"></span>
+              Resultado esperado
+            </div>
+            <div class="quick-body">
+              <h3 id="previewStoreName">Nome da loja</h3>
+              <p id="previewStoreNiche">Nicho ainda não definido</p>
+
+              <div class="preview-pills" id="previewPills">
+                <span>Loja premium</span>
+                <span>Mobile first</span>
+              </div>
+
+              <div class="preview-palette">
+                <span data-color="Preto"></span>
+                <span data-color="Branco"></span>
+                <span data-color="Cinza"></span>
+              </div>
+
+              <div class="preview-mini-window">
+                <div class="mini-line lg"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line sm"></div>
+                <div class="mini-btn-row">
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section onboarding-body" id="form">
+      <div class="container onboarding-grid">
+        <aside class="step-sidebar">
+          <div class="step-box">
+            <strong>Etapas</strong>
+            <button class="step-link active" data-step="1">1. Loja</button>
+            <button class="step-link" data-step="2">2. Visual</button>
+            <button class="step-link" data-step="3">3. Catálogo</button>
+            <button class="step-link" data-step="4">4. Contato</button>
+            <button class="step-link" data-step="5">5. Estrutura</button>
+            <button class="step-link" data-step="6">6. Revisão</button>
+          </div>
+        </aside>
+
+        <section class="form-shell">
+          <form id="builderForm" class="builder-form">
+            <div class="form-step active" data-step="1">
+              <div class="step-title">
+                <span class="kicker">Passo 1</span>
+                <h2>Dados principais da loja</h2>
+                <p>Essas informações ajudam a IA a escolher o melhor template e o melhor tipo de copy para o projeto.</p>
+              </div>
+
+              <div class="field-grid two">
+                <label class="field">
+                  <span>Nome da loja</span>
+                  <input type="text" name="storeName" placeholder="Ex.: VT Imports" />
+                </label>
+
+                <label class="field">
+                  <span>Nome da IA / projeto interno</span>
+                  <input type="text" name="projectName" placeholder="Ex.: VT Builder IA" />
+                </label>
+              </div>
+
+              <div class="field-grid two">
+                <label class="field">
+                  <span>Nicho principal</span>
+                  <select name="niche">
+                    <option value="">Selecione</option>
+                    <option>Streetwear</option>
+                    <option>Sneakers</option>
+                    <option>Roupas importadas</option>
+                    <option>Camisas de time</option>
+                    <option>Loja mista de roupas e tênis</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Público principal</span>
+                  <select name="audience">
+                    <option value="">Selecione</option>
+                    <option>Jovem streetwear</option>
+                    <option>Clientes de sneakers premium</option>
+                    <option>Público geral com foco em moda</option>
+                    <option>Futebol lifestyle</option>
+                    <option>Vendas via Instagram e WhatsApp</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Descreva a proposta da loja</span>
+                <textarea name="storeIdea" rows="5" placeholder="Ex.: Quero uma loja premium de roupa e tênis, com visual forte, preto e branco, foco em mobile e vendas por WhatsApp."></textarea>
+              </label>
+            </div>
+
+            <div class="form-step" data-step="2">
+              <div class="step-title">
+                <span class="kicker">Passo 2</span>
+                <h2>Visual e identidade</h2>
+                <p>Quanto mais certo ficar esse bloco, mais bonita a primeira versão da home e do catálogo tende a sair.</p>
+              </div>
+
+              <div class="field-grid two">
+                <label class="field">
+                  <span>Estilo visual</span>
+                  <select name="visualStyle">
+                    <option value="">Selecione</option>
+                    <option>Streetwear premium</option>
+                    <option>Luxo minimalista</option>
+                    <option>Dark commerce</option>
+                    <option>Esportivo premium</option>
+                    <option>Hype / importado</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Tom do layout</span>
+                  <select name="tone">
+                    <option value="">Selecione</option>
+                    <option>Escuro e forte</option>
+                    <option>Escuro e elegante</option>
+                    <option>Contraste alto</option>
+                    <option>Premium clean</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="palette-group">
+                <span class="field-label">Paleta principal</span>
+                <div class="palette-options">
+                  <label class="palette-option"><input type="checkbox" name="palette" value="Preto" checked><span>Preto</span></label>
+                  <label class="palette-option"><input type="checkbox" name="palette" value="Branco" checked><span>Branco</span></label>
+                  <label class="palette-option"><input type="checkbox" name="palette" value="Cinza" checked><span>Cinza</span></label>
+                  <label class="palette-option"><input type="checkbox" name="palette" value="Laranja"><span>Laranja</span></label>
+                  <label class="palette-option"><input type="checkbox" name="palette" value="Azul escuro"><span>Azul escuro</span></label>
+                  <label class="palette-option"><input type="checkbox" name="palette" value="Prata"><span>Prata</span></label>
+                </div>
+              </div>
+
+              <label class="field">
+                <span>Detalhes visuais importantes</span>
+                <textarea name="visualNotes" rows="4" placeholder="Ex.: Quero botões fortes, cards premium, hero impactante, aparência de loja cara e banners com cara de campanha real."></textarea>
+              </label>
+            </div>
+
+            <div class="form-step" data-step="3">
+              <div class="step-title">
+                <span class="kicker">Passo 3</span>
+                <h2>Catálogo e produtos iniciais</h2>
+                <p>Defina o que a IA já deve cadastrar de cara para deixar a loja com mais cara de operação real.</p>
+              </div>
+
+              <div class="field-grid two">
+                <label class="field">
+                  <span>Categorias principais</span>
+                  <textarea name="categories" rows="5" placeholder="Ex.: Air Max TN, Nike Shox, Nike Tech, Camisetas, Camisas de time, Promoções"></textarea>
+                </label>
+
+                <label class="field">
+                  <span>Produtos de exemplo</span>
+                  <textarea name="exampleProducts" rows="5" placeholder="Ex.: Air Max TN Preto, Nike Shox TL Branco, Nike Tech Fleece Preto..."></textarea>
+                </label>
+              </div>
+
+              <div class="field-grid three">
+                <label class="field">
+                  <span>Faixa de preço</span>
+                  <select name="priceRange">
+                    <option value="">Selecione</option>
+                    <option>Popular</option>
+                    <option>Médio premium</option>
+                    <option>Premium</option>
+                    <option>Misto</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Mostrar promoções?</span>
+                  <select name="promotions">
+                    <option value="">Selecione</option>
+                    <option>Sim, com destaque forte</option>
+                    <option>Sim, mas discreto</option>
+                    <option>Não por enquanto</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Modo de venda</span>
+                  <select name="salesMode">
+                    <option value="">Selecione</option>
+                    <option>Catálogo com WhatsApp</option>
+                    <option>Carrinho e checkout</option>
+                    <option>Os dois</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-step" data-step="4">
+              <div class="step-title">
+                <span class="kicker">Passo 4</span>
+                <h2>Contatos e canais</h2>
+                <p>Esses dados serão usados no header, rodapé, WhatsApp flutuante, checkout e chamadas de suporte.</p>
+              </div>
+
+              <div class="field-grid two">
+                <label class="field">
+                  <span>WhatsApp</span>
+                  <input type="text" name="whatsapp" placeholder="Ex.: 11 919730067" />
+                </label>
+
+                <label class="field">
+                  <span>E-mail</span>
+                  <input type="email" name="email" placeholder="Ex.: vtimportspb@gmail.com" />
+                </label>
+              </div>
+
+              <div class="field-grid two">
+                <label class="field">
+                  <span>Instagram</span>
+                  <input type="text" name="instagram" placeholder="Ex.: @vtimports" />
+                </label>
+
+                <label class="field">
+                  <span>Cidade / região</span>
+                  <input type="text" name="region" placeholder="Ex.: Guarulhos - SP" />
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Mensagem padrão do WhatsApp</span>
+                <textarea name="waMessage" rows="4" placeholder="Ex.: Olá! Vim pelo site e quero mais informações sobre os produtos."></textarea>
+              </label>
+            </div>
+
+            <div class="form-step" data-step="5">
+              <div class="step-title">
+                <span class="kicker">Passo 5</span>
+                <h2>Estrutura desejada</h2>
+                <p>Marque o que o builder já deve preparar na primeira versão do projeto.</p>
+              </div>
+
+              <div class="check-grid">
+                <label class="check-card"><input type="checkbox" name="structure" value="Home premium" checked><span>Home premium</span></label>
+                <label class="check-card"><input type="checkbox" name="structure" value="Catálogo" checked><span>Catálogo</span></label>
+                <label class="check-card"><input type="checkbox" name="structure" value="Página de produto" checked><span>Página de produto</span></label>
+                <label class="check-card"><input type="checkbox" name="structure" value="Carrinho" checked><span>Carrinho</span></label>
+                <label class="check-card"><input type="checkbox" name="structure" value="Checkout" checked><span>Checkout</span></label>
+                <label class="check-card"><input type="checkbox" name="structure" value="Contato" checked><span>Contato</span></label>
+                <label class="check-card"><input type="checkbox" name="structure" value="Admin básico" checked><span>Admin básico</span></label>
+                <label class="check-card"><input type="checkbox" name="structure" value="FAQ"><span>FAQ</span></label>
+                <label class="check-card"><input type="checkbox" name="structure" value="Políticas"><span>Políticas</span></label>
+                <label class="check-card"><input type="checkbox" name="structure" value="Integração Supabase"><span>Integração Supabase</span></label>
+              </div>
+
+              <label class="field">
+                <span>Objetivo principal do projeto</span>
+                <textarea name="goal" rows="4" placeholder="Ex.: Quero uma loja linda, forte no mobile, pronta para vender por WhatsApp e com estrutura para crescer depois."></textarea>
+              </label>
+            </div>
+
+            <div class="form-step" data-step="6" id="summary">
+              <div class="step-title">
+                <span class="kicker">Passo 6</span>
+                <h2>Revisão final</h2>
+                <p>Esse resumo simula o payload que iria para a IA gerar a primeira versão da loja.</p>
+              </div>
+
+              <div class="summary-card">
+                <pre id="summaryOutput">Preencha os campos para gerar o resumo do projeto.</pre>
+              </div>
+
+              <div class="summary-actions">
+                <button type="button" class="btn btn-outline" id="copySummary">Copiar resumo</button>
+                <button type="submit" class="btn btn-primary">Gerar projeto</button>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-ghost" id="prevStep">Voltar</button>
+              <button type="button" class="btn btn-primary" id="nextStep">Continuar</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="onboarding.js"></script>
+</body>
+</html>

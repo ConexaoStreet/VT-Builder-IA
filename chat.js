@@ -1,31 +1,122 @@
-const firstPrompt = localStorage.getItem('vt_builder_first_prompt');
-const chatTitle = localStorage.getItem('vt_builder_chat_title');
 
-const firstPromptText = document.getElementById('firstPromptText');
-const chatTitleEl = document.getElementById('chatTitle');
-const sendMessageBtn = document.getElementById('sendMessageBtn');
-const chatInput = document.getElementById('chatInput');
-const chatHistory = document.getElementById('chatHistory');
+const STORAGE_KEY = 'vt_builder_projects_v4';
+const ACTIVE_KEY = 'vt_builder_active_project_v4';
 
-if (firstPrompt && firstPromptText) firstPromptText.textContent = firstPrompt;
-if (chatTitle && chatTitleEl) chatTitleEl.textContent = chatTitle;
+function getProjects(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    const parsed = JSON.parse(raw || '[]');
+    return Array.isArray(parsed) ? parsed : [];
+  }catch{
+    return [];
+  }
+}
 
-if (sendMessageBtn) {
-  sendMessageBtn.addEventListener('click', () => {
-    const text = chatInput.value.trim();
-    if (!text) return;
+function saveProjects(projects){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+}
 
-    const user = document.createElement('div');
-    user.className = 'msg user';
-    user.innerHTML = `<small>Você</small><p>${text}</p>`;
-    chatHistory.appendChild(user);
+function getActiveProject(){
+  const activeId = localStorage.getItem(ACTIVE_KEY);
+  const projects = getProjects();
+  let project = projects.find(item => item.id === activeId);
 
-    const ai = document.createElement('div');
-    ai.className = 'msg ai';
-    ai.innerHTML = `<small>VT Builder IA</small><p>Entendi. Numa versão funcional real, eu aplicaria essa mudança no projeto, atualizaria o preview e criaria a nova versão dos arquivos automaticamente.</p>`;
-    chatHistory.appendChild(ai);
+  if (!project && projects.length) {
+    project = [...projects].sort((a,b) => b.createdAt - a.createdAt)[0];
+    localStorage.setItem(ACTIVE_KEY, project.id);
+  }
 
-    chatInput.value = '';
-    chatHistory.scrollTop = chatHistory.scrollHeight;
+  return { project, projects };
+}
+
+function renderSidebar(projects, activeId){
+  const list = document.getElementById('sidebarProjectList');
+  list.innerHTML = '';
+
+  [...projects].sort((a,b) => b.createdAt - a.createdAt).forEach(project => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = project.title;
+    if (project.id === activeId) btn.classList.add('is-active');
+    btn.addEventListener('click', () => {
+      localStorage.setItem(ACTIVE_KEY, project.id);
+      location.reload();
+    });
+    list.appendChild(btn);
   });
 }
+
+function renderMessages(project){
+  const history = document.getElementById('chatHistory');
+  history.innerHTML = '';
+
+  project.messages.forEach(message => {
+    const box = document.createElement('div');
+    box.className = 'msg ' + (message.role === 'system' ? 'system' : message.role === 'user' ? 'user' : 'ai');
+
+    const label = message.role === 'user' ? 'Você' : message.role === 'system' ? 'Sistema' : 'VT Builder IA';
+    box.innerHTML = `<small>${label}</small><p>${message.text}</p>`;
+    history.appendChild(box);
+  });
+
+  history.scrollTop = history.scrollHeight;
+}
+
+function renderPreview(project){
+  const previewTitle = document.getElementById('previewTitle');
+  const previewDesc = document.getElementById('previewDesc');
+  previewTitle.textContent = project.title;
+  previewDesc.textContent = project.description || project.prompt || 'Projeto criado por IA.';
+}
+
+function init(){
+  const { project, projects } = getActiveProject();
+  if (!project) {
+    window.location.href = 'index.html';
+    return;
+  }
+
+  document.getElementById('chatTitle').textContent = project.title;
+  renderSidebar(projects, project.id);
+  renderMessages(project);
+  renderPreview(project);
+
+  const sendBtn = document.getElementById('sendMessageBtn');
+  const input = document.getElementById('chatInput');
+
+  sendBtn.addEventListener('click', () => {
+    const text = input.value.trim();
+    if (!text) return;
+
+    const allProjects = getProjects();
+    const current = allProjects.find(item => item.id === project.id);
+    if (!current) return;
+
+    current.messages.push({ role: 'user', text });
+    current.messages.push({
+      role: 'ai',
+      text: 'Entendi. Em uma versão funcional completa, eu aplicaria essa mudança no projeto, atualizaria o preview, ajustaria os arquivos e manteria todo o histórico sincronizado automaticamente.'
+    });
+
+    saveProjects(allProjects);
+    input.value = '';
+    renderMessages(current);
+  });
+
+  const newProjectBtn = document.getElementById('newProjectBtn');
+  if (newProjectBtn) {
+    newProjectBtn.addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  }
+
+  const toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
+  const sidebar = document.getElementById('sidebar');
+  if (toggleSidebarBtn) {
+    toggleSidebarBtn.addEventListener('click', () => {
+      sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
+    });
+  }
+}
+
+init();

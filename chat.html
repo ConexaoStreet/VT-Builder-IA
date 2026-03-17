@@ -2,135 +2,118 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>VT Builder IA — Projeto</title>
-  <meta name="theme-color" content="#0b0b10" />
+  <meta name="theme-color" content="#0a0a0a" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="chat-body">
-  <div class="chat-app">
-    <aside class="left-rail">
-      <div class="rail-top">
-        <a href="index.html" class="back-link">←</a>
-        <button class="new-chat">Novo projeto</button>
+  <div class="chat-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <a href="index.html" class="sidebar-back">←</a>
+        <button class="new-project-btn" id="newProjectBtn">Novo projeto</button>
       </div>
 
-      <div class="rail-section">
-        <span class="rail-label">Projetos</span>
-        <button class="rail-project active">Projeto atual</button>
-        <button class="rail-project">Outro projeto</button>
-        <button class="rail-project">Mais um projeto</button>
+      <div class="sidebar-section">
+        <span class="section-label">Projetos</span>
+        <div class="project-list" id="sidebarProjectList"></div>
       </div>
 
-      <div class="rail-section">
-        <span class="rail-label">Histórico</span>
-        <button class="rail-item">Prompt inicial</button>
-        <button class="rail-item">Primeira versão</button>
-        <button class="rail-item">Refino visual</button>
-        <button class="rail-item">Ajustes mobile</button>
+      <div class="sidebar-section">
+        <span class="section-label">Arquivos</span>
+        <div class="file-list" id="fileList">
+          <button type="button">index.html</button>
+          <button type="button">styles.css</button>
+          <button type="button">app.js</button>
+          <button type="button">components/hero.js</button>
+          <button type="button">components/cards.js</button>
+        </div>
       </div>
     </aside>
 
-    <main class="center-chat">
-      <header class="chat-header">
-        <div>
-          <small>Projeto ativo</small>
-          <h1 id="chatTitle">Novo Projeto</h1>
+    <main class="chat-main">
+      <header class="chat-topbar">
+        <div class="chat-topbar-left">
+          <button class="icon-btn mobile-only" id="toggleSidebarBtn" aria-label="Abrir barra lateral">☰</button>
+          <div>
+            <small>Projeto ativo</small>
+            <h1 id="chatTitle">Novo Projeto</h1>
+          </div>
         </div>
 
-        <div class="chat-header-actions">
-          <button class="top-action">Código</button>
-          <button class="top-action">Deploy</button>
-          <button class="top-action primary">Publicar</button>
+        <div class="chat-topbar-actions">
+          <button class="pill-btn" type="button">Código</button>
+          <button class="pill-btn" type="button">Deploy</button>
+          <button class="pill-btn primary" type="button">Publicar</button>
         </div>
       </header>
 
-      <div class="chat-history" id="chatHistory">
-        <div class="msg user">
-          <small>Você</small>
-          <p id="firstPromptText">Crie um site premium com base no meu pedido.</p>
-        </div>
+      <div class="chat-content">
+        <section class="conversation" id="chatHistory"></section>
 
-        <div class="msg ai">
-          <small>VT Builder IA</small>
-          <p>Perfeito. Vou estruturar esse projeto com base no seu comando inicial, gerar a primeira versão, criar as páginas principais e abrir o preview ao vivo para você continuar refinando pelo chat.</p>
-        </div>
+        <section class="composer-wrap">
+          <div class="composer">
+            <textarea id="chatInput" placeholder="Peça mudanças no site, crie páginas, refine o visual, troque fontes, melhore o mobile..."></textarea>
 
-        <div class="msg ai system">
-          <small>Sistema</small>
-          <p>✓ Título do projeto gerado<br>✓ Estrutura inicial criada<br>✓ Preview inicial montado<br>✓ Arquivos principais adicionados</p>
-        </div>
-      </div>
+            <div class="composer-actions">
+              <div class="composer-left">
+                <button class="circle-btn subtle" type="button">＋</button>
+                <button class="circle-btn subtle" type="button">📎</button>
+                <button class="circle-btn subtle" type="button">🖼</button>
+              </div>
 
-      <div class="composer">
-        <textarea id="chatInput" placeholder="Peça mudanças no site, crie páginas, refine o visual, troque fontes, melhore o mobile..."></textarea>
-        <div class="composer-bottom">
-          <div class="composer-tools">
-            <button class="mini-circle">＋</button>
-            <button class="ghost-icon">📎</button>
-            <button class="ghost-icon">🖼</button>
+              <button class="circle-btn send" id="sendMessageBtn" type="button">↑</button>
+            </div>
           </div>
-          <button class="send-btn" id="sendMessageBtn">↑</button>
-        </div>
+        </section>
       </div>
     </main>
 
-    <aside class="right-preview">
-      <div class="preview-topbar">
+    <aside class="preview-panel">
+      <div class="preview-head">
         <strong>Preview ao vivo</strong>
         <div class="preview-modes">
-          <button class="mode active">Desktop</button>
-          <button class="mode">Mobile</button>
+          <button class="mode-btn is-active" type="button">Desktop</button>
+          <button class="mode-btn" type="button">Mobile</button>
         </div>
       </div>
 
-      <div class="preview-canvas">
-        <div class="browser-bar">
+      <div class="browser-frame">
+        <div class="browser-dots">
           <span></span><span></span><span></span>
         </div>
 
-        <div class="site-preview" id="sitePreview">
-          <div class="preview-header">
-            <div class="preview-logo"></div>
-            <div class="preview-nav"></div>
+        <div class="site-canvas">
+          <div class="site-header">
+            <div class="site-logo"></div>
+            <div class="site-nav"></div>
           </div>
 
-          <div class="preview-hero">
-            <div class="hero-copy-card">
-              <b class="tiny-kicker">Primeira versão</b>
-              <h2>Seu site está sendo construído pela conversa</h2>
-              <p>Preview dinâmico, histórico do chat e arquivos do projeto no mesmo lugar.</p>
-              <div class="hero-buttons">
+          <div class="site-hero">
+            <div class="site-copy-card">
+              <span class="site-chip">Preview inicial</span>
+              <h2 id="previewTitle">Seu site está sendo construído</h2>
+              <p id="previewDesc">A primeira versão aparece aqui e evolui conforme a conversa continua.</p>
+              <div class="site-buttons">
                 <span></span>
                 <span></span>
               </div>
             </div>
-            <div class="hero-visual-card"></div>
+
+            <div class="site-visual-card"></div>
           </div>
 
-          <div class="preview-products">
+          <div class="site-grid">
             <div></div>
             <div></div>
             <div></div>
           </div>
 
-          <div class="preview-strip"></div>
-        </div>
-      </div>
-
-      <div class="files-box">
-        <div class="files-head">
-          <strong>Arquivos</strong>
-        </div>
-        <div class="files-list">
-          <button>home.tsx</button>
-          <button>about.tsx</button>
-          <button>contact.tsx</button>
-          <button>components/</button>
-          <button>styles.css</button>
+          <div class="site-strip"></div>
         </div>
       </div>
     </aside>
