@@ -1,6 +1,6 @@
 
-const STORAGE_KEY = 'vt_builder_projects_v4';
-const ACTIVE_KEY = 'vt_builder_active_project_v4';
+const STORAGE_KEY = 'vt_builder_projects_v5';
+const ACTIVE_KEY = 'vt_builder_active_project_v5';
 
 const defaultProjects = [
   {
@@ -48,7 +48,7 @@ function generateTitle(prompt){
   const text = (prompt || '').trim();
   if (!text) return 'Novo Projeto';
   const firstLine = text.split(/[.!?\n]/)[0].trim();
-  return firstLine.length > 40 ? firstLine.slice(0, 40).trim() + '...' : firstLine;
+  return firstLine.length > 42 ? firstLine.slice(0, 42).trim() + '...' : firstLine;
 }
 
 function generateDescription(prompt){
@@ -56,6 +56,11 @@ function generateDescription(prompt){
   if (!text) return 'Projeto criado por IA';
   const firstLine = text.split(/[.!?\n]/)[0].trim();
   return firstLine.length > 58 ? firstLine.slice(0, 58).trim() + '...' : firstLine;
+}
+
+function openProject(projectId){
+  localStorage.setItem(ACTIVE_KEY, projectId);
+  window.location.href = 'chat.html';
 }
 
 function renderProjects(){
@@ -85,11 +90,6 @@ function renderProjects(){
     item.addEventListener('click', () => openProject(project.id));
     drawer.appendChild(item);
   });
-}
-
-function openProject(projectId){
-  localStorage.setItem(ACTIVE_KEY, projectId);
-  window.location.href = 'chat.html';
 }
 
 function createProject(){
@@ -124,12 +124,8 @@ const openDrawerBtn = document.getElementById('openDrawerBtn');
 const closeDrawerBtn = document.getElementById('closeDrawerBtn');
 const mobileDrawer = document.getElementById('mobileDrawer');
 
-if (openDrawerBtn) {
-  openDrawerBtn.addEventListener('click', () => mobileDrawer.classList.add('is-open'));
-}
-if (closeDrawerBtn) {
-  closeDrawerBtn.addEventListener('click', () => mobileDrawer.classList.remove('is-open'));
-}
+if (openDrawerBtn) openDrawerBtn.addEventListener('click', () => mobileDrawer.classList.add('is-open'));
+if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', () => mobileDrawer.classList.remove('is-open'));
 if (mobileDrawer) {
   mobileDrawer.addEventListener('click', (e) => {
     if (e.target === mobileDrawer) mobileDrawer.classList.remove('is-open');

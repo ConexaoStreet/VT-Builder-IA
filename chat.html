@@ -12,10 +12,10 @@
 </head>
 <body class="chat-body">
   <div class="chat-layout">
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar desktop-sidebar">
       <div class="sidebar-head">
         <a href="index.html" class="sidebar-back">←</a>
-        <button class="new-project-btn" id="newProjectBtn">Novo projeto</button>
+        <button class="new-project-btn" id="newProjectBtnDesktop" type="button">Novo projeto</button>
       </div>
 
       <div class="sidebar-section">
@@ -25,13 +25,40 @@
 
       <div class="sidebar-section">
         <span class="section-label">Arquivos</span>
-        <div class="file-list" id="fileList">
+        <div class="file-list" id="fileListDesktop">
           <button type="button">index.html</button>
           <button type="button">styles.css</button>
           <button type="button">app.js</button>
           <button type="button">components/hero.js</button>
           <button type="button">components/cards.js</button>
         </div>
+      </div>
+    </aside>
+
+    <aside class="mobile-drawer" id="chatDrawer">
+      <div class="drawer-card">
+        <div class="drawer-head">
+          <strong>Projeto</strong>
+          <button class="icon-btn small" id="closeChatDrawerBtn" aria-label="Fechar menu">✕</button>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="section-label">Projetos</span>
+          <div class="project-list" id="mobileProjectList"></div>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="section-label">Arquivos</span>
+          <div class="file-list" id="fileListMobile">
+            <button type="button">index.html</button>
+            <button type="button">styles.css</button>
+            <button type="button">app.js</button>
+            <button type="button">components/hero.js</button>
+            <button type="button">components/cards.js</button>
+          </div>
+        </div>
+
+        <button class="new-project-btn full" id="newProjectBtnMobile" type="button">Novo projeto</button>
       </div>
     </aside>
 
@@ -57,7 +84,7 @@
 
         <section class="composer-wrap">
           <div class="composer">
-            <textarea id="chatInput" placeholder="Peça mudanças no site, crie páginas, refine o visual, troque fontes, melhore o mobile..."></textarea>
+            <textarea id="chatInput" rows="1" placeholder="Peça mudanças no site, crie páginas, refine o visual, troque fontes, melhore o mobile..."></textarea>
 
             <div class="composer-actions">
               <div class="composer-left">

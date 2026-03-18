@@ -1,6 +1,6 @@
 
-const STORAGE_KEY = 'vt_builder_projects_v4';
-const ACTIVE_KEY = 'vt_builder_active_project_v4';
+const STORAGE_KEY = 'vt_builder_projects_v5';
+const ACTIVE_KEY = 'vt_builder_active_project_v5';
 
 function getProjects(){
   try{
@@ -29,8 +29,9 @@ function getActiveProject(){
   return { project, projects };
 }
 
-function renderSidebar(projects, activeId){
-  const list = document.getElementById('sidebarProjectList');
+function renderProjectButtons(containerId, projects, activeId, closeDrawer){
+  const list = document.getElementById(containerId);
+  if (!list) return;
   list.innerHTML = '';
 
   [...projects].sort((a,b) => b.createdAt - a.createdAt).forEach(project => {
@@ -40,6 +41,7 @@ function renderSidebar(projects, activeId){
     if (project.id === activeId) btn.classList.add('is-active');
     btn.addEventListener('click', () => {
       localStorage.setItem(ACTIVE_KEY, project.id);
+      if (closeDrawer) closeDrawer();
       location.reload();
     });
     list.appendChild(btn);
@@ -53,7 +55,6 @@ function renderMessages(project){
   project.messages.forEach(message => {
     const box = document.createElement('div');
     box.className = 'msg ' + (message.role === 'system' ? 'system' : message.role === 'user' ? 'user' : 'ai');
-
     const label = message.role === 'user' ? 'Você' : message.role === 'system' ? 'Sistema' : 'VT Builder IA';
     box.innerHTML = `<small>${label}</small><p>${message.text}</p>`;
     history.appendChild(box);
@@ -69,6 +70,11 @@ function renderPreview(project){
   previewDesc.textContent = project.description || project.prompt || 'Projeto criado por IA.';
 }
 
+function autoGrow(textarea){
+  textarea.style.height = '24px';
+  textarea.style.height = Math.min(textarea.scrollHeight, 220) + 'px';
+}
+
 function init(){
   const { project, projects } = getActiveProject();
   if (!project) {
@@ -76,15 +82,21 @@ function init(){
     return;
   }
 
+  const chatDrawer = document.getElementById('chatDrawer');
+  const openDrawer = () => chatDrawer.classList.add('is-open');
+  const closeDrawer = () => chatDrawer.classList.remove('is-open');
+
   document.getElementById('chatTitle').textContent = project.title;
-  renderSidebar(projects, project.id);
+  renderProjectButtons('sidebarProjectList', projects, project.id, null);
+  renderProjectButtons('mobileProjectList', projects, project.id, closeDrawer);
   renderMessages(project);
   renderPreview(project);
 
-  const sendBtn = document.getElementById('sendMessageBtn');
   const input = document.getElementById('chatInput');
+  autoGrow(input);
+  input.addEventListener('input', () => autoGrow(input));
 
-  sendBtn.addEventListener('click', () => {
+  const send = () => {
     const text = input.value.trim();
     if (!text) return;
 
@@ -100,21 +112,30 @@ function init(){
 
     saveProjects(allProjects);
     input.value = '';
+    autoGrow(input);
     renderMessages(current);
+  };
+
+  document.getElementById('sendMessageBtn').addEventListener('click', send);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      send();
+    }
   });
 
-  const newProjectBtn = document.getElementById('newProjectBtn');
-  if (newProjectBtn) {
-    newProjectBtn.addEventListener('click', () => {
-      window.location.href = 'index.html';
-    });
-  }
+  const newProjectAction = () => window.location.href = 'index.html';
+  document.getElementById('newProjectBtnDesktop').addEventListener('click', newProjectAction);
+  document.getElementById('newProjectBtnMobile').addEventListener('click', newProjectAction);
 
   const toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
-  const sidebar = document.getElementById('sidebar');
-  if (toggleSidebarBtn) {
-    toggleSidebarBtn.addEventListener('click', () => {
-      sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
+  const closeChatDrawerBtn = document.getElementById('closeChatDrawerBtn');
+
+  if (toggleSidebarBtn) toggleSidebarBtn.addEventListener('click', openDrawer);
+  if (closeChatDrawerBtn) closeChatDrawerBtn.addEventListener('click', closeDrawer);
+  if (chatDrawer) {
+    chatDrawer.addEventListener('click', (e) => {
+      if (e.target === chatDrawer) closeDrawer();
     });
   }
 }
