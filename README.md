@@ -1,39 +1,38 @@
 # VT Builder IA
 
-Protótipo de front-end para uma plataforma de criação com IA, com foco em dashboard, chat, onboarding e área de trabalho.
-
-## Recursos presentes
-
-- Dashboard
-- Chat com composer responsivo
-- Histórico e persistência local de projetos
-- Onboarding
-- Workspace
-- Interface em preto e branco
-- Experiência adaptada para mobile
+Protótipo de front-end para uma plataforma de criação com IA. O projeto reúne páginas de apresentação, dashboard, onboarding, chat e workspace.
 
 ## Tecnologias
 
-- HTML
-- CSS
-- JavaScript
+HTML, CSS e JavaScript, sem um backend versionado neste repositório.
+
+## Recursos presentes
+
+- Navegação entre páginas e prévias de interface.
+- Histórico de projetos e mensagens salvo em localStorage.
+- Seleção de projeto ativo.
+- Composição de mensagens e adaptação da interface para telas menores.
+
+## Limites do protótipo
+
+O chat utiliza respostas fixas para demonstrar a interação. Ele não chama um modelo de IA nem gera ou modifica código de verdade.
+
+Os dados ficam no navegador utilizado. Autenticação, banco de dados compartilhado, integração com IA e publicação de projetos não estão implementados neste repositório.
+
+## Executar localmente
+
+Abra index.html no navegador. Para servir os arquivos por HTTP, com Python instalado:
+
+```bash
+python -m http.server 8000
+```
+
+Abra http://localhost:8000. O Python serve os arquivos estáticos neste exemplo; ele não faz parte do backend do projeto.
 
 ## Arquivos principais
 
-```text
-index.html
-dashboard.html
-chat.html
-onboarding.html
-workspace.html
-*.css
-*.js
-```
+index.html, dashboard.html, chat.html, onboarding.html e workspace.html, acompanhados dos respectivos estilos e scripts.
 
-## Observação
+## Estado
 
-Este repositório representa a camada de front-end/protótipo. Integrações de backend, autenticação e serviços externos devem ser documentadas separadamente quando adicionadas.
-
----
-
-**Última atividade registrada:** 18/03/2026
+Protótipo de interface em desenvolvimento. Revise e valide os fluxos antes de qualquer uso real.
